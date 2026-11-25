@@ -14,10 +14,10 @@ function criarFormulario() {
     .setChoiceValues(['Sim', 'Talvez', 'Ainda não'])
     .setRequired(true);
 
-  form.addScaleItem()
+  // Escala do Forms só aceita nome nas pontas; para nomear cada nota usamos múltipla escolha
+  form.addMultipleChoiceItem()
     .setTitle('Gostou da apresentação?')
-    .setBounds(1, 5)
-    .setLabels('Não gostei tanto.', 'Achei TOP patrão!')
+    .setChoiceValues(['1 - Não gostei', '2 - Achei fraco', '3 - Mais ou menos', '4 - Gostei', '5 - Ficou top!'])
     .setRequired(true);
 
   form.addMultipleChoiceItem()
