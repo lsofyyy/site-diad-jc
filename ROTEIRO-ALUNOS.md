@@ -41,7 +41,7 @@ Três edições para a demo (VS Code de verdade, com Live Server):
 
 ## Fechamento (qualquer aluno, 30 s)
 
-> "Isso foi o curso de Desenvolvimento de Sistemas do João Clímaco. Agora é a vez de vocês: apontem a câmera do celular para este **QR code** e respondam o formulário. São três perguntinhas: se querem entrar no curso, se gostaram da apresentação e se a sala ficou bonita. Vale muito a opinião de vocês!"
+> "Isso foi o curso de Desenvolvimento de Sistemas do João Clímaco. Agora é a vez de vocês: apontem a câmera do celular para este **QR code** e respondam o formulário. São três perguntinhas: se querem entrar no curso, se gostaram da apresentação e como ficou a decoração da sala. Vale muito a opinião de vocês!"
 
 Deixem a seção **Feedback** (`#feedback`) na tela por uns 30 segundos. Antes do Dia D, confiram em `script.js` se `FORM_URL` já tem o link do Google Forms (senão o site mostra "Defina FORM_URL no script.js") e testem o QR com um celular.
 
