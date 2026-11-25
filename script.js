@@ -5,7 +5,7 @@
 
 /* ---------- CONFIGURAÇÃO: link do formulário de feedback ----------
    Cole aqui o link do Google Forms. O QR code do site é gerado a partir dele. */
-const FORM_URL = "COLE_AQUI_O_LINK_DO_GOOGLE_FORMS";
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeQrJ8e031h70F0HcB3I5dqB-opP4QHh0Th0A1NioHFe5YWpg/viewform";
 
 /* ---------- 0. PREPARAÇÃO ---------- */
 // avisa o CSS que o JavaScript está funcionando (ativa o efeito reveal)
