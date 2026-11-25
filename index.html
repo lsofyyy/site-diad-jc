@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desenvolvimento de Sistemas — CETI Gov. João Clímaco D'Almeida</title>
+  <meta name="description" content="Conheça o curso de Desenvolvimento de Sistemas do CETI Gov. João Clímaco D'Almeida: lógica, programação, banco de dados e muito mais.">
+  <meta name="theme-color" content="#2e1065">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== BARRA DE PROGRESSO + MENU FIXO ===== -->
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <header class="topo">
+    <div class="container topo-in">
+      <span class="marca">DS · João Clímaco</span>
+      <nav class="menu" id="menu" aria-label="Seções do site">
+        <a href="#hero">Início</a>
+        <a href="#curso">Curso</a>
+        <a href="#linguagens">Linguagens</a>
+        <a href="#lab">Laboratório</a>
+        <a href="#vscode">VS Code</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#como">Como foi feito</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#matricula">Matrícula</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== 1. HERO ===== -->
+    <section id="hero" class="hero escuro" data-secao aria-labelledby="t-hero">
+      <!-- símbolos de programação flutuando no fundo (criados no script.js) -->
+      <div class="simbolos" id="simbolos" aria-hidden="true"></div>
+      <div class="container hero-conteudo">
+        <!-- logos em 3D: .logo-3d inclina com o mouse, .logo-badge balança sozinha -->
+        <div class="logos">
+          <div class="logo-3d"><div class="logo-badge"><img src="assets/logo-escola.png" alt="Logo do CETI Gov. João Clímaco D'Almeida"></div></div>
+        </div>
+        <h1 id="t-hero">Desenvolvimento de Sistemas</h1>
+        <p class="hero-digita" aria-live="off">Aprenda a criar <span id="digitando">sites</span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="hero-frase">Aqui você deixa de só usar a tecnologia e passa a criar a sua.<br><strong>CETI Gov. João Clímaco D'Almeida</strong></p>
+        <a class="btn btn-claro" href="#curso">Rolar para conhecer <span class="seta-rolar" aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <!-- ===== 2. O QUE O CURSO OFERECE ===== -->
+    <section id="curso" class="secao" data-secao aria-labelledby="t-curso">
+      <div class="container">
+        <h2 id="t-curso" class="reveal" style="--i:1">O que o curso oferece</h2>
+        <p class="lead reveal" style="--i:2">Sete coisas que você vai viver aqui, explicadas sem complicação.</p>
+        <!-- carrossel em formato de rosquinha: os 7 cartões ficam num anel 3D que gira devagar.
+             A posição de cada cartão vem de --i (0 a 6) no CSS. Passe o mouse para pausar. -->
+        <div class="anel-cena reveal">
+        <div class="anel">
+          <!-- cada cartão é um <article>; o JS usa o primeiro como exemplo na aba HTML -->
+          <article class="cartao" style="--i:0">
+            <span class="emoji" aria-hidden="true">🧠</span>
+            <h3>Pensamento computacional</h3>
+            <p>Aprenda a quebrar um problema grande em passos pequenos.</p>
+          </article>
+          <article class="cartao" style="--i:1">
+            <span class="emoji" aria-hidden="true">⌨️</span>
+            <h3>Lógica e programação</h3>
+            <p>Pense passo a passo, como quem ensina um robô a resolver problemas.</p>
+          </article>
+          <article class="cartao" style="--i:2">
+            <span class="emoji" aria-hidden="true">🖥️</span>
+            <h3>Computadores e infraestrutura</h3>
+            <p>Descubra como o computador e a internet funcionam por dentro.</p>
+          </article>
+          <article class="cartao" style="--i:3">
+            <span class="emoji" aria-hidden="true">🗄️</span>
+            <h3>Banco de dados</h3>
+            <p>Veja como apps guardam fotos, contas e pontuações sem perder nada.</p>
+          </article>
+          <article class="cartao" style="--i:4">
+            <span class="emoji" aria-hidden="true">🔁</span>
+            <h3>Métodos ágeis</h3>
+            <p>Trabalhe em equipe, entregando o projeto em pequenos passos.</p>
+          </article>
+          <article class="cartao" style="--i:5">
+            <span class="emoji" aria-hidden="true">🧭</span>
+            <h3>Mentorias</h3>
+            <p>Acompanhamento para você crescer ao longo do curso.</p>
+          </article>
+          <article class="cartao" style="--i:6">
+            <span class="emoji" aria-hidden="true">🌐</span>
+            <h3>Sites</h3>
+            <p>Crie páginas que qualquer pessoa abre no celular ou no computador.</p>
+          </article>
+        </div>
+        </div>
+        <!-- matérias do curso (1º ano). Cada card é uma matéria; o hover está no CSS (.materia:hover) -->
+        <h3 class="grade-titulo reveal">Matérias do 1º ano</h3>
+        <div class="materias reveal">
+          <article class="materia" style="--n:0" tabindex="0">
+            <h4>Pensamento Computacional I</h4>
+            <p>Resolver problemas dividindo em passos.</p>
+          </article>
+          <article class="materia" style="--n:1" tabindex="0">
+            <h4>Mentorias TEC I</h4>
+            <p>Orientação e acompanhamento do início do curso.</p>
+          </article>
+          <article class="materia" style="--n:2" tabindex="0">
+            <h4>Arquitetura de Computadores e Infraestrutura de TI</h4>
+            <p>Como computadores e redes funcionam por dentro.</p>
+          </article>
+          <article class="materia" style="--n:3" tabindex="0">
+            <h4>Lógica e Programação Estruturada</h4>
+            <p>Os primeiros programas, passo a passo.</p>
+          </article>
+          <article class="materia" style="--n:4" tabindex="0">
+            <h4>Modelagem de Banco de Dados</h4>
+            <p>Organizar informações em tabelas.</p>
+          </article>
+          <article class="materia" style="--n:5" tabindex="0">
+            <h4>Métodos Ágeis de Desenvolvimento</h4>
+            <p>Trabalhar em equipe, em pequenas entregas.</p>
+          </article>
+        </div>
+        <p class="nota-grade reveal">As matérias dos outros anos podem ser consultadas na secretaria da escola.</p>
+        <!-- contadores animados: o número final fica em data-alvo -->
+        <div class="contadores">
+          <div class="contador reveal"><strong data-alvo="6">0</strong><span>matérias no 1º ano</span></div>
+          <div class="contador reveal" style="--i:1"><strong data-alvo="7">0</strong><span>áreas de aprendizado</span></div>
+          <div class="contador reveal" style="--i:2"><strong data-alvo="7">0</strong><span>linguagens e ferramentas para conhecer</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. LINGUAGENS (cartões que viram) ===== -->
+    <section id="linguagens" class="secao alt" data-secao aria-labelledby="t-ling">
+      <div class="container">
+        <h2 id="t-ling" class="reveal" style="--i:1">Linguagens</h2>
+        <p class="lead reveal" style="--i:2">Toque em um cartão para ver para que serve e um mini exemplo.</p>
+        <div class="grade-lang">
+
+          <div class="flip reveal" style="--i:0" role="button" tabindex="0" aria-pressed="false" aria-label="HTML. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#be185d"/><path d="M24 22 12 32l12 10M40 22l12 10-12 10M36 18 28 46" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3>HTML</h3><p>O esqueleto</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Define a estrutura da página: títulos, textos, imagens e botões.</p>
+<pre><code data-lang="html">&lt;h1&gt;Olá!&lt;/h1&gt;
+&lt;button&gt;Clique&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:1" role="button" tabindex="0" aria-pressed="false" aria-label="CSS. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1c6fd6"/><path d="M26 16c-6 0-6 4-6 8s0 6-6 8c6 2 6 4 6 8s0 8 6 8M38 16c6 0 6 4 6 8s0 6 6 8c-6 2-6 4-6 8s0 8-6 8" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+                <h3>CSS</h3><p>A roupa</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Deixa tudo bonito: cores, tamanhos, posições e animações.</p>
+<pre><code data-lang="css">h1 {
+  color: purple;
+  font-size: 3rem;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:2" role="button" tabindex="0" aria-pressed="false" aria-label="JavaScript. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fbbf24"/><text x="32" y="44" text-anchor="middle" font-size="30" font-weight="800" fill="#2e1065" font-family="system-ui,sans-serif">JS</text></svg>
+                <h3>JavaScript</h3><p>O cérebro da página</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Faz a página reagir: cliques, jogos, contas e mensagens.</p>
+<pre><code data-lang="js">botao.onclick = () =&gt; {
+  alert("Oi!");
+};</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:3" role="button" tabindex="0" aria-pressed="false" aria-label="Python. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f4e9c"/><text x="32" y="43" text-anchor="middle" font-size="28" font-weight="800" fill="#fbbf24" font-family="system-ui,sans-serif">Py</text></svg>
+                <h3>Python</h3><p>Simples e poderosa</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Automação, análise de dados e inteligência artificial.</p>
+<pre><code data-lang="py">for i in range(3):
+    print("Olá", i)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:4" role="button" tabindex="0" aria-pressed="false" aria-label="Java. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#7c3aed"/><path d="M16 30h26v10a10 10 0 0 1-10 10h-6a10 10 0 0 1-10-10z" fill="#fff"/><path d="M42 32h4a5 5 0 0 1 0 10h-4" stroke="#fff" stroke-width="4" fill="none"/><path d="M24 12c-3 4 3 6 0 12M32 12c-3 4 3 6 0 12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+                <h3>Java</h3><p>Apps e sistemas grandes</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Aplicativos Android, sistemas de bancos e grandes empresas.</p>
+<pre><code data-lang="js">System.out.println(
+  "Olá, mundo!");</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:5" role="button" tabindex="0" aria-pressed="false" aria-label="SQL. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#4da8f0"/><ellipse cx="32" cy="18" rx="16" ry="7" fill="#fff"/><path d="M16 18v14c0 4 7 7 16 7s16-3 16-7V18M16 32v14c0 4 7 7 16 7s16-3 16-7V32" stroke="#fff" stroke-width="4" fill="none"/></svg>
+                <h3>SQL</h3><p>Conversa com dados</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Guarda e busca informações em um banco de dados.</p>
+<pre><code data-lang="sql">SELECT nome
+FROM alunos
+WHERE ano = 9;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip reveal" style="--i:6" role="button" tabindex="0" aria-pressed="false" aria-label="Git. Ative para ver para que serve">
+            <div class="flip-inner">
+              <div class="flip-frente">
+                <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#2e1065"/><circle cx="20" cy="16" r="5" fill="#fff"/><circle cx="20" cy="48" r="5" fill="#fff"/><circle cx="44" cy="30" r="5" fill="#fff"/><path d="M20 21v22M20 38c0-8 24 0 24-8" stroke="#fff" stroke-width="4" fill="none"/></svg>
+                <h3>Git</h3><p>A máquina do tempo</p><span class="dica-toque">toque para virar</span>
+              </div>
+              <div class="flip-verso">
+                <h3>Para que serve</h3>
+                <p>Guarda o histórico do código e permite trabalhar em equipe.</p>
+<pre><code data-lang="sh">git add .
+git commit -m "meu site"
+git push</code></pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. LABORATÓRIO AO VIVO ===== -->
+    <section id="lab" class="secao" data-secao aria-labelledby="t-lab">
+      <div class="container">
+        <h2 id="t-lab" class="reveal" style="--i:1">Laboratório ao vivo</h2>
+        <p class="lead reveal" style="--i:2">Digite nas caixas e veja o resultado aparecer na hora.</p>
+        <div class="lab-barra reveal">
+          <span class="rotulo">Exemplos:</span>
+          <button class="btn btn-pequeno" data-exemplo="botao">Botão que muda de cor</button>
+          <button class="btn btn-pequeno" data-exemplo="contador">Contador</button>
+          <button class="btn btn-pequeno" data-exemplo="cartao">Cartão animado</button>
+          <button class="btn btn-pequeno btn-contorno" id="lab-restaurar">↺ Restaurar</button>
+        </div>
+        <div class="lab">
+          <div class="lab-editores">
+            <div class="lab-editor"><label for="lab-html">HTML</label><textarea id="lab-html" spellcheck="false"></textarea></div>
+            <div class="lab-editor"><label for="lab-css">CSS</label><textarea id="lab-css" spellcheck="false"></textarea></div>
+            <div class="lab-editor"><label for="lab-js">JavaScript</label><textarea id="lab-js" spellcheck="false"></textarea></div>
+          </div>
+          <div class="lab-previa">
+            <div class="titulo-previa">Prévia (atualiza ao digitar)</div>
+            <iframe id="lab-iframe" title="Prévia do laboratório" sandbox="allow-scripts"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. VS CODE SIMULADO ===== -->
+    <section id="vscode" class="secao alt" data-secao aria-labelledby="t-vsc">
+      <div class="container">
+        <h2 id="t-vsc" class="reveal" style="--i:1">VS Code</h2>
+        <p class="lead reveal" style="--i:2">Clique nos arquivos, edite o código, salve e veja o site mudar.</p>
+        <div class="vsc-layout reveal">
+          <div class="vsc" aria-label="Simulação do editor VS Code">
+            <div class="vsc-titulo"><i></i><i></i><i></i><span>meu-site — Visual Studio Code</span></div>
+            <div class="vsc-corpo">
+              <div class="explorer" id="explorer">
+                <p class="exp-titulo">Explorer</p>
+                <ul>
+                  <li class="pasta"><span class="arq" style="cursor:default">▾ 📁 meu-site</span>
+                    <ul class="filho">
+                      <li><button class="arq" data-arq="index.html">📄 index.html</button></li>
+                      <li><button class="arq" data-arq="style.css">🎨 style.css</button></li>
+                      <li><button class="arq" data-arq="script.js">⚙️ script.js</button></li>
+                      <li><button class="arq" data-arq="assets">▸ 📁 assets</button>
+                        <ul class="filho" id="pasta-assets" hidden>
+                          <li><span class="arq" style="cursor:default">🖼️ logo-escola.png</span></li>
+                          <li><span class="arq" style="cursor:default">🖼️ favicon.png</span></li>
+                        </ul>
+                      </li>
+                      <li><button class="arq" data-arq="README.md">📝 README.md</button></li>
+                      <li><button class="arq" data-arq=".gitignore">🙈 .gitignore</button></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="editor-area">
+                <div class="abas" id="vsc-abas" role="tablist" aria-label="Arquivos abertos"></div>
+                <pre class="editor" id="vsc-editor" contenteditable="plaintext-only" spellcheck="false" tabindex="0" aria-label="Editor de código"></pre>
+                <div class="vsc-barra">
+                  <button class="btn btn-claro btn-pequeno" id="vsc-salvar">💾 Salvar e ver resultado</button>
+                  <button class="btn btn-claro btn-pequeno" id="vsc-git">▶ Rodar git no terminal</button>
+                </div>
+              </div>
+            </div>
+            <div class="terminal" id="vsc-terminal" aria-label="Terminal simulado" aria-live="off"><span class="t-cmd">$ </span><span class="t-cursor"></span></div>
+          </div>
+          <div class="previa-vsc">
+            <div class="titulo-previa">Navegador (prévia do index.html)</div>
+            <iframe id="vsc-iframe" title="Prévia do site simulado" sandbox="allow-scripts"></iframe>
+            <p class="extra">Edite o texto do título ou a cor em <code>--cor</code>, clique em “Salvar” e veja o resultado.</p>
+          </div>
+        </div>
+        <div class="extensoes">
+          <div class="extensao reveal"><span class="emoji" aria-hidden="true">📡</span><div><h3>Live Server</h3><p>Abre o site no navegador e atualiza sozinho a cada salvamento.</p></div></div>
+          <div class="extensao reveal" style="--i:1"><span class="emoji" aria-hidden="true">✨</span><div><h3>Prettier</h3><p>Arruma e alinha o código automaticamente. Fica tudo organizado.</p></div></div>
+          <div class="extensao reveal" style="--i:2"><span class="emoji" aria-hidden="true">🌿</span><div><h3>Git</h3><p>Já vem no VS Code: mostra o que mudou e envia para o GitHub.</p></div></div>
+        </div>
+        <div class="legenda reveal" aria-label="Fluxo do código">
+          <span class="chip">VS Code escreve</span><span class="seta" aria-hidden="true">→</span>
+          <span class="chip">navegador executa</span><span class="seta" aria-hidden="true">→</span>
+          <span class="chip">GitHub guarda</span><span class="seta" aria-hidden="true">→</span>
+          <span class="chip">GitHub Pages publica</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. QUIZ ===== -->
+    <section id="quiz" class="secao" data-secao aria-labelledby="t-quiz">
+      <div class="container">
+        <h2 id="t-quiz" class="reveal" style="--i:1">Quiz</h2>
+        <p class="lead reveal" style="--i:2">Quatro perguntas rápidas. Será que você já pensa como programador?</p>
+        <div class="quiz reveal" id="quiz-caixa" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== 7. COMO FOI FEITO (5 abas) ===== -->
+    <section id="como" class="secao alt" data-secao aria-labelledby="t-como">
+      <div class="container">
+        <h2 id="t-como" class="reveal" style="--i:1">Como foi feito</h2>
+        <p class="lead reveal" style="--i:2">Cada aba mostra um pedaço real deste próprio site.</p>
+
+        <div class="abas-site" role="tablist" aria-label="Como o site foi feito" id="abas-site">
+          <button class="aba-site" role="tab" id="tab-vsc" aria-controls="p-vsc" aria-selected="true">VS Code</button>
+          <button class="aba-site" role="tab" id="tab-html" aria-controls="p-html" aria-selected="false" tabindex="-1">HTML</button>
+          <button class="aba-site" role="tab" id="tab-css" aria-controls="p-css" aria-selected="false" tabindex="-1">CSS</button>
+          <button class="aba-site" role="tab" id="tab-js" aria-controls="p-js" aria-selected="false" tabindex="-1">JS</button>
+          <button class="aba-site" role="tab" id="tab-ar" aria-controls="p-ar" aria-selected="false" tabindex="-1">No ar</button>
+        </div>
+
+        <!-- aba VS Code -->
+        <div class="painel" role="tabpanel" id="p-vsc" aria-labelledby="tab-vsc">
+          <h3>VS Code: a oficina</h3>
+          <p class="analogia">🔧 É como uma oficina: tem bancada, ferramentas e tudo à mão para montar o projeto.</p>
+          <p>Todo o site foi escrito em três arquivos de texto, dentro de uma pasta:</p>
+<pre><code data-lang="sh">site-diad-jc/
+├── index.html    ← o esqueleto
+├── style.css     ← a roupa e o movimento
+├── script.js     ← o cérebro
+└── assets/       ← a logo e o ícone</code></pre>
+        </div>
+
+        <!-- aba HTML: o trecho é copiado da própria página pelo script.js -->
+        <div class="painel" role="tabpanel" id="p-html" aria-labelledby="tab-html" hidden>
+          <h3>HTML: o esqueleto</h3>
+          <p class="analogia">🦴 É como o esqueleto do corpo: sem ele, nada fica de pé. Só depois vêm a roupa e os movimentos.</p>
+          <p>Este é o código HTML real do primeiro cartão do curso, lido ao vivo desta página:</p>
+          <pre><code id="html-real" data-lang="html"></code></pre>
+        </div>
+
+        <!-- aba CSS -->
+        <div class="painel" role="tabpanel" id="p-css" aria-labelledby="tab-css" hidden>
+          <h3>CSS: a roupa e o movimento</h3>
+          <p class="analogia">👕 É como a roupa e a dança: o CSS escolhe as cores e também faz as coisas se mexerem.</p>
+<pre><code data-lang="css">:root {
+  --roxo-600: #7c3aed;
+}
+@keyframes pular {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-60px); }
+}
+.bolinha {
+  animation: pular var(--dur, 1s) ease-in-out infinite;
+}</code></pre>
+          <div class="demo-linha">
+            <div class="palco"><div class="bolinha" id="bolinha" aria-hidden="true"></div></div>
+            <div class="demo-controle">
+              <label for="dur-range">Duração: <output id="dur-valor">1.0s</output></label>
+              <input type="range" id="dur-range" min="0.3" max="3" step="0.1" value="1">
+            </div>
+          </div>
+        </div>
+
+        <!-- aba JS: o código mostrado é a própria função do script.js -->
+        <div class="painel" role="tabpanel" id="p-js" aria-labelledby="tab-js" hidden>
+          <h3>JavaScript: o cérebro</h3>
+          <p class="analogia">🧠 É como o cérebro: pensa, decide e manda o corpo agir. Aqui ele conta os números dos contadores.</p>
+          <pre><code id="js-real" data-lang="js"></code></pre>
+          <div class="demo-linha">
+            <button class="btn" id="btn-exec">▶ Executar animarContador(demo, 100)</button>
+            <span class="numero-demo" id="demo-contador" aria-live="polite">0</span>
+          </div>
+        </div>
+
+        <!-- aba No ar -->
+        <div class="painel" role="tabpanel" id="p-ar" aria-labelledby="tab-ar" hidden>
+          <h3>No ar: do código ao link</h3>
+          <p class="analogia">🍕 É como uma pizzaria: a cozinha faz, o estoque guarda a receita e o motoboy entrega em casa.</p>
+          <div class="fluxo" id="fluxo">
+            <div class="passo" style="--i:0"><span class="emoji" aria-hidden="true">💻</span>Código</div>
+            <span class="fluxo-seta" style="--i:1" aria-hidden="true">→</span>
+            <div class="passo" style="--i:1"><span class="emoji" aria-hidden="true">🐙</span>GitHub</div>
+            <span class="fluxo-seta" style="--i:2" aria-hidden="true">→</span>
+            <div class="passo" style="--i:2"><span class="emoji" aria-hidden="true">🌍</span>GitHub Pages</div>
+            <span class="fluxo-seta" style="--i:3" aria-hidden="true">→</span>
+            <div class="passo" style="--i:3"><span class="emoji" aria-hidden="true">🔗</span>Link</div>
+          </div>
+          <button class="btn btn-pequeno" id="btn-fluxo">↺ Ver de novo</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== 8. FEEDBACK POR QR CODE ===== -->
+    <section id="feedback" class="secao" data-secao aria-labelledby="t-fb">
+      <div class="container">
+        <h2 id="t-fb" class="reveal" style="--i:1">Sua opinião vale ouro</h2>
+        <p class="lead reveal" style="--i:2">Aponte a câmera do celular para o QR code e responda em menos de um minuto.</p>
+        <div class="fb-grade">
+          <div class="qr-cena reveal">
+            <!-- o QR é desenhado pelo script.js (gerador próprio, sem biblioteca) -->
+            <div class="qr-cartao">
+              <div class="qr-caixa" id="qr-caixa" role="img" aria-label="QR code do formulário de feedback"></div>
+              <a class="btn" id="qr-botao" href="#feedback" target="_blank" rel="noopener">Abrir o formulário</a>
+              <small class="qr-url" id="qr-url"></small>
+            </div>
+          </div>
+          <div class="fb-perguntas">
+            <article class="fb-pergunta reveal"><span class="fb-num" aria-hidden="true">1</span><div><h3>Você quer entrar no curso?</h3><p>Sim · Talvez · Ainda não</p></div></article>
+            <article class="fb-pergunta reveal" style="--i:1"><span class="fb-num" aria-hidden="true">2</span><div><h3>Gostou da apresentação?</h3><p>De 1 a 5 estrelas ⭐</p></div></article>
+            <article class="fb-pergunta reveal" style="--i:2"><span class="fb-num" aria-hidden="true">3</span><div><h3>Tudo ficou incrível?</h3><p>Sim · Quase · Precisa melhorar</p></div></article>
+            <article class="fb-pergunta opcional reveal" style="--i:3"><span class="fb-num" aria-hidden="true">+</span><div><h3>Comentário (opcional)</h3><p>Escreva o que quiser nos contar.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== 9. RODAPÉ / MATRÍCULA ===== -->
+  <footer id="matricula" class="rodape escuro" data-secao>
+    <div class="container">
+      <h2>Venha construir o seu futuro</h2>
+      <p>Procure a secretaria da escola e peça informações sobre a matrícula no curso de Desenvolvimento de Sistemas.</p>
+      <a class="btn btn-claro" href="#hero">Voltar ao início ↑</a>
+      <div class="logos">
+        <div class="logo-badge"><img src="assets/logo-escola.png" alt="Logo do CETI Gov. João Clímaco D'Almeida"></div>
+      </div>
+      <small>CETI Gov. João Clímaco D'Almeida</small>
+    </div>
+  </footer>
+
+</body>
+</html>
