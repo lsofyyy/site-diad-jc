@@ -4,8 +4,8 @@
 
 | # | Aluno | Tempo | Seção do site | O que mostrar |
 |---|-------|-------|---------------|---------------|
-| 0 | Quem abre (qualquer um) | 1 min | Início + "O que o curso oferece" | O topo, as logos e a rosquinha de cartões girando. Mostrem as **matérias do 1º ano** passando o mouse. |
-| 1 | VS Code | 3 min | "VS Code" + VS Code de verdade | Demo ao vivo com 3 edições (veja abaixo). |
+| 0 | Quem abre (qualquer um) | 1 min | Início + "O que o curso oferece" | O topo, as logos, a rosquinha de cartões (arrastem com o mouse!) e a seção **Plataforma da Seduc** (bibliotecavirtual.seduc.pi.gov.br). Mostrem as **matérias do 1º ano** passando o mouse. |
+| 1 | VS Code | 3 min | "Como foi feito" → aba **VS Code** + VS Code de verdade | Demo ao vivo com 3 edições (veja abaixo). Explique que o VS Code é a ferramenta que usamos para *fazer este site*; nas matérias de Pensamento Computacional e Mentorias TEC o estudo é na plataforma da Seduc. |
 | 2 | HTML | 2 min | "Como foi feito" → aba **HTML** | O cartão real, tag por tag. |
 | 3 | CSS | 2 min | aba **CSS** | Arrastar a duração da bolinha. |
 | 4 | JavaScript | 2 min | aba **JS** (e "Laboratório ao vivo") | Botão "Executar" e o contador. |
@@ -53,6 +53,6 @@ Deixem a seção **Feedback** (`#feedback`) na tela por uns 30 segundos. Antes d
 
 ## Checklist antes de começar
 - [ ] Site aberto em tela cheia, internet não é necessária (o site funciona offline).
-- [ ] VS Code aberto na pasta do projeto, com o Live Server funcionando.
+- [ ] VS Code aberto na pasta do projeto, com o Live Server funcionando (só para a demo).
 - [ ] Cada aluno sabe qual seção é a sua e treinou a edição ao vivo.
-- [ ] Plano B: se o VS Code travar, usem a seção "VS Code" do próprio site, que é uma simulação.
+- [ ] Plano B: se o VS Code travar, mostrem o código na aba "Como foi feito" do próprio site e façam as edições no GitHub (botão de lápis).

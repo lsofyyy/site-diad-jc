@@ -222,100 +222,7 @@ $$("[data-exemplo]").forEach((b) => b.addEventListener("click", () => carregarEx
 $("#lab-restaurar").addEventListener("click", () => carregarExemplo(exemploAtual));
 carregarExemplo("botao");
 
-/* ---------- 10. VS CODE SIMULADO ---------- */
-const ARQUIVOS = {
-  "index.html": { lang: "html", code: '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <title>Meu site</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1 id="titulo">Olá, mundo!</h1>\n  <button id="botao">Mudar cor</button>\n  <script src="script.js"><\/script>\n</body>\n</html>' },
-  "style.css": { lang: "css", code: ":root {\n  --cor: #a21cf0;\n}\nbody {\n  font-family: system-ui;\n  text-align: center;\n  padding: 2rem;\n}\nh1 {\n  color: var(--cor);\n}\nbutton {\n  padding: 10px 18px;\n  border: 0;\n  border-radius: 10px;\n  background: var(--cor);\n  color: white;\n  cursor: pointer;\n}" },
-  "script.js": { lang: "js", code: '// Troca a cor do título ao clicar\nconst titulo = document.getElementById("titulo");\nconst botao = document.getElementById("botao");\nbotao.addEventListener("click", () => {\n  titulo.style.color = "#be185d";\n});' },
-  "README.md": { lang: "md", code: "# Meu site\n\nProjeto do curso de Desenvolvimento de Sistemas.\nAbra o index.html no navegador." },
-  ".gitignore": { lang: "gitignore", code: "node_modules/\n.env\n.DS_Store" },
-};
-Object.values(ARQUIVOS).forEach((a) => { a.salvo = a.code; });
-const vsc = { abertas: [], ativo: null };
-const edVsc = $("#vsc-editor");
-// alguns navegadores não aceitam "plaintext-only": usa "true" como plano B
-if (edVsc.contentEditable !== "plaintext-only") edVsc.contentEditable = "true";
-
-function desenharAbas() {
-  const barra = $("#vsc-abas");
-  barra.innerHTML = "";
-  vsc.abertas.forEach((nome) => {
-    const b = document.createElement("button");
-    b.className = "aba" + (nome === vsc.ativo ? " ativo" : "") + (ARQUIVOS[nome].code !== ARQUIVOS[nome].salvo ? " sujo" : "");
-    b.setAttribute("role", "tab"); b.setAttribute("aria-selected", nome === vsc.ativo);
-    b.textContent = nome;
-    b.addEventListener("click", () => abrirArquivo(nome));
-    barra.append(b);
-  });
-  $$(".arq[data-arq]").forEach((a) => a.classList.toggle("ativo", a.dataset.arq === vsc.ativo));
-}
-function abrirArquivo(nome) {
-  if (vsc.ativo) ARQUIVOS[vsc.ativo].code = edVsc.textContent; // guarda o que foi digitado
-  if (!vsc.abertas.includes(nome)) vsc.abertas.push(nome);
-  vsc.ativo = nome;
-  edVsc.innerHTML = realcar(ARQUIVOS[nome].code, ARQUIVOS[nome].lang);
-  desenharAbas();
-}
-// monta a prévia: troca <link> e <script src> pelo conteúdo dos outros arquivos
-function previaVsc() {
-  const html = ARQUIVOS["index.html"].salvo
-    .replace(/<link[^>]*style\.css[^>]*>/, () => "<style>" + ARQUIVOS["style.css"].salvo + "</style>")
-    .replace(/<script[^>]*script\.js[^>]*><\/script>/, () => "<script>" + ARQUIVOS["script.js"].salvo + "<\/script>");
-  $("#vsc-iframe").srcdoc = html;
-}
-function salvarVsc() {
-  ARQUIVOS[vsc.ativo].code = edVsc.textContent;
-  Object.values(ARQUIVOS).forEach((a) => { a.salvo = a.code; });
-  edVsc.innerHTML = realcar(ARQUIVOS[vsc.ativo].code, ARQUIVOS[vsc.ativo].lang);
-  desenharAbas(); previaVsc();
-}
-edVsc.addEventListener("input", () => { // marca a aba com "●" enquanto não salvou
-  ARQUIVOS[vsc.ativo].code = edVsc.textContent; desenharAbas();
-});
-edVsc.addEventListener("keydown", (e) => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); salvarVsc(); }
-});
-$("#vsc-salvar").addEventListener("click", salvarVsc);
-$$(".arq[data-arq]").forEach((b) => b.addEventListener("click", () => {
-  if (b.dataset.arq === "assets") { // pasta: abre/fecha
-    const pasta = $("#pasta-assets");
-    pasta.hidden = !pasta.hidden;
-    b.textContent = (pasta.hidden ? "▸" : "▾") + " 📁 assets";
-  } else abrirArquivo(b.dataset.arq);
-}));
-
-// terminal: digita os comandos do git um por um
-let fichaTerm = 0;
-const PASSOS_GIT = [
-  { cmd: "git add .", saida: "" },
-  { cmd: 'git commit -m "primeiro commit"', saida: "[main 3f2a1c9] primeiro commit\n 5 files changed, 420 insertions(+)" },
-  { cmd: "git push origin main", saida: "Enumerating objects: 9, done.\nWriting objects: 100% (9/9), done.\nTo github.com:escola/meu-site.git\n * [new branch]      main -> main" },
-];
-async function rodarGit() {
-  const minha = ++fichaTerm, term = $("#vsc-terminal");
-  term.innerHTML = "";
-  for (const passo of PASSOS_GIT) {
-    const linha = document.createElement("div");
-    linha.innerHTML = '<span class="t-cmd">$ </span>';
-    const txt = document.createElement("span");
-    linha.append(txt); term.append(linha);
-    for (const letra of passo.cmd) {
-      txt.textContent += letra; await esperar(reduzir ? 0 : 35);
-      if (minha !== fichaTerm) return;
-    }
-    await esperar(reduzir ? 0 : 350);
-    if (passo.saida) { const s = document.createElement("div"); s.textContent = passo.saida; term.append(s); }
-    await esperar(reduzir ? 0 : 500);
-    if (minha !== fichaTerm) return;
-  }
-  const fim = document.createElement("div");
-  fim.innerHTML = '<span class="t-cmd">$ </span><span class="t-cursor"></span>';
-  term.append(fim);
-}
-$("#vsc-git").addEventListener("click", rodarGit);
-abrirArquivo("index.html"); previaVsc();
-
-/* ---------- 11. QUIZ ---------- */
+/* ---------- 10. QUIZ ---------- */
 const PERGUNTAS = [
   { p: "Qual linguagem monta o “esqueleto” de uma página web?", o: ["HTML", "CSS", "SQL", "Git"], c: 0, d: "HTML define títulos, textos e botões." },
   { p: "Para que serve o CSS?", o: ["Guardar dados", "Deixar a página bonita", "Enviar e-mails", "Consertar o computador"], c: 1, d: "CSS cuida de cores, tamanhos e animações." },
@@ -358,7 +265,7 @@ function fimQuiz() {
 }
 mostrarPergunta();
 
-/* ---------- 12. ABAS "COMO FOI FEITO" ---------- */
+/* ---------- 11. ABAS "COMO FOI FEITO" ---------- */
 const abasSite = $$("#abas-site [role=tab]");
 function mostrarAba(aba, foco) {
   abasSite.forEach((a) => {
@@ -393,7 +300,7 @@ function rodarFluxo() {
 }
 $("#btn-fluxo").addEventListener("click", rodarFluxo);
 
-/* ---------- 13. HERO: símbolos de programação no fundo ---------- */
+/* ---------- 12. HERO: símbolos de programação no fundo ---------- */
 (function simbolos() {
   const caixa = $("#simbolos");
   const lista = ["</>", "{ }", "( )", "[ ]", ";", "=>", "&&", "||", "//", "#", "01", "10", "<div>", "fn()", "if", "=", "!=", "++", "const", "$", "%", "*", "<>", "..", "0x", "return", "{ ; }", "</>"];
@@ -411,7 +318,7 @@ $("#btn-fluxo").addEventListener("click", rodarFluxo);
   });
 })();
 
-/* ---------- 14. HERO: o mouse move o fundo e inclina as logos em 3D ---------- */
+/* ---------- 13. HERO: o mouse move o fundo e inclina as logos em 3D ---------- */
 (function mouse3d() {
   const hero = $("#hero");
   if (reduzir || !matchMedia("(pointer: fine)").matches) return;
@@ -432,7 +339,44 @@ $("#btn-fluxo").addEventListener("click", rodarFluxo);
   });
 })();
 
-/* ---------- 15. GERADOR DE QR CODE (JavaScript puro, saída em SVG) ----------
+/* ---------- CARROSSEL DA ROSQUINHA: gira sozinho (mesmo com o mouse em cima) e dá para arrastar ----------
+   O ângulo vai para a variável CSS --rot. Arrastar soma graus; ao soltar, o impulso diminui até voltar ao giro lento. */
+(function carrossel() {
+  const cena = $(".anel-cena"), anel = $(".anel");
+  if (reduzir) return; // sem movimento: o CSS mostra uma grade comum
+  const VEL = -6, GRAUS_POR_PX = 0.35; // giro lento (graus por segundo) e sensibilidade do arraste
+  let ang = 0, impulso = 0, arrastando = false, xAnt = 0, tAnt = 0, visivel = true, t0 = performance.now();
+  new IntersectionObserver((e) => { visivel = e[0].isIntersecting; }).observe(cena);
+  function quadro(t) {
+    const dt = Math.min((t - t0) / 1000, 0.05); t0 = t;
+    if (visivel && !arrastando) { ang += (VEL + impulso) * dt; impulso *= Math.pow(0.05, dt); }
+    anel.style.setProperty("--rot", ang.toFixed(2) + "deg");
+    requestAnimationFrame(quadro);
+  }
+  requestAnimationFrame(quadro);
+  cena.addEventListener("pointerdown", (e) => {
+    arrastando = true; xAnt = e.clientX; tAnt = e.timeStamp; impulso = 0;
+    cena.classList.add("arrastando"); cena.setPointerCapture(e.pointerId);
+  });
+  cena.addEventListener("pointermove", (e) => {
+    if (!arrastando) return;
+    const dg = (e.clientX - xAnt) * GRAUS_POR_PX;
+    ang += dg;
+    const dt = (e.timeStamp - tAnt) / 1000;
+    if (dt > 0) impulso = Math.max(-240, Math.min(240, dg / dt)); // velocidade do arraste, em graus por segundo
+    xAnt = e.clientX; tAnt = e.timeStamp;
+  });
+  const soltar = () => { arrastando = false; cena.classList.remove("arrastando"); };
+  cena.addEventListener("pointerup", soltar);
+  cena.addEventListener("pointercancel", soltar);
+  // teclado: setas giram um cartão
+  cena.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { e.preventDefault(); ang += 360 / 7; }
+    if (e.key === "ArrowRight") { e.preventDefault(); ang -= 360 / 7; }
+  });
+})();
+
+/* ---------- 14. GERADOR DE QR CODE (JavaScript puro, saída em SVG) ----------
    Modo byte (UTF-8), correção de erro M, versão escolhida pelo tamanho do texto.
    Passos: texto → bytes → códigos de correção (Reed-Solomon) → desenho dos módulos → máscara. */
 function gerarQR(texto) {
@@ -573,7 +517,7 @@ function qrParaSVG(qr) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${t} ${t}" shape-rendering="crispEdges" aria-hidden="true"><rect width="${t}" height="${t}" fill="#fff"/>${linhas}</svg>`;
 }
 
-/* ---------- 16. SEÇÃO FEEDBACK: mostra o QR e o botão ---------- */
+/* ---------- 15. SEÇÃO FEEDBACK: mostra o QR e o botão ---------- */
 function montarFeedback(url) {
   const caixa = $("#qr-caixa"), botao = $("#qr-botao"), txt = $("#qr-url");
   caixa.classList.remove("visivel");
