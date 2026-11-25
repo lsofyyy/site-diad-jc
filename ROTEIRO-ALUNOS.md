@@ -4,7 +4,7 @@
 
 | # | Aluno | Tempo | Seção do site | O que mostrar |
 |---|-------|-------|---------------|---------------|
-| 0 | Quem abre (qualquer um) | 1 min | Início + "O que o curso oferece" | O topo, as logos, a rosquinha de cartões (arrastem com o mouse!) e a seção **Plataforma da Seduc** (bibliotecavirtual.seduc.pi.gov.br). Mostrem as **matérias do 1º ano** passando o mouse. |
+| 0 | Quem abre (qualquer um) | 1 min | Início + "O que o curso oferece" | O topo, as logos, a rosquinha de cartões (arrastem com o mouse!) e a seção **Plataforma da Seduc** (bibliotecavirtual.seduc.pi.gov.br). Mostrem as **matérias do 1º ano** (cards dentro da pasta: passem o mouse e cliquem). |
 | 1 | VS Code | 3 min | "Como foi feito" → aba **VS Code** + VS Code de verdade | Demo ao vivo com 3 edições (veja abaixo). Explique que o VS Code é a ferramenta que usamos para *fazer este site*; nas matérias de Pensamento Computacional e Mentorias TEC o estudo é na plataforma da Seduc. |
 | 2 | HTML | 2 min | "Como foi feito" → aba **HTML** | O cartão real, tag por tag. |
 | 3 | CSS | 2 min | aba **CSS** | Arrastar a duração da bolinha. |
@@ -41,7 +41,7 @@ Três edições para a demo (VS Code de verdade, com Live Server):
 
 ## Fechamento (qualquer aluno, 30 s)
 
-> "Isso foi o curso de Desenvolvimento de Sistemas do João Clímaco. Agora é a vez de vocês: apontem a câmera do celular para este **QR code** e respondam o formulário. São três perguntinhas: se querem entrar no curso, se gostaram da apresentação e se tudo ficou incrível. Vale muito a opinião de vocês!"
+> "Isso foi o curso de Desenvolvimento de Sistemas do João Clímaco. Agora é a vez de vocês: apontem a câmera do celular para este **QR code** e respondam o formulário. São três perguntinhas: se querem entrar no curso, se gostaram da apresentação e se a sala ficou bonita. Vale muito a opinião de vocês!"
 
 Deixem a seção **Feedback** (`#feedback`) na tela por uns 30 segundos. Antes do Dia D, confiram em `script.js` se `FORM_URL` já tem o link do Google Forms (senão o site mostra "Defina FORM_URL no script.js") e testem o QR com um celular.
 

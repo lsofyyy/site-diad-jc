@@ -227,6 +227,7 @@ const PERGUNTAS = [
   { p: "Qual linguagem monta o “esqueleto” de uma página web?", o: ["HTML", "CSS", "SQL", "Git"], c: 0, d: "HTML define títulos, textos e botões." },
   { p: "Para que serve o CSS?", o: ["Guardar dados", "Deixar a página bonita", "Enviar e-mails", "Consertar o computador"], c: 1, d: "CSS cuida de cores, tamanhos e animações." },
   { p: "Em let idade = 14; o que é “idade”?", o: ["Uma variável", "Um erro", "Uma imagem", "Um site"], c: 0, d: "Variável é uma caixinha com nome que guarda um valor." },
+  { p: "O que faz um banco de dados?", o: ["Desenhar logos", "Deixar a página colorida", "Guardar e organizar informações", "Consertar o computador"], c: 2, d: "Banco de dados guarda contas, fotos e pontuações sem perder nada." },
   { p: "Para que serve o Git?", o: ["Fazer desenhos", "Guardar o histórico do código", "Aumentar a internet", "Abrir sites"], c: 1, d: "Git é uma máquina do tempo para o código." },
 ];
 const caixaQuiz = $("#quiz-caixa");
@@ -259,11 +260,25 @@ function responder(i) {
   prox.focus();
 }
 function fimQuiz() {
-  const msg = pontos === PERGUNTAS.length ? "Você já pensa como programador! 🏆" : pontos >= 2 ? "Muito bem! Falta pouco para virar craque. 💪" : "Sem problema: no curso você aprende tudo isso. 🌱";
+  const msg = pontos === PERGUNTAS.length ? "Você já pensa como programador! 🏆" : pontos >= 3 ? "Muito bem! Falta pouco para virar craque. 💪" : "Sem problema: no curso você aprende tudo isso. 🌱";
   caixaQuiz.innerHTML = `<div class="quiz-fim"><div class="nota">${pontos}/${PERGUNTAS.length}</div><h3>${msg}</h3><button class="btn" id="quiz-again">↺ Jogar de novo</button></div>`;
   $("#quiz-again").addEventListener("click", () => { qi = 0; pontos = 0; mostrarPergunta(); });
 }
 mostrarPergunta();
+
+/* ---------- MATÉRIAS: clicar em um card abre a janela com ele inteiro ---------- */
+(function materias() {
+  const dlg = $("#materia-dialog");
+  $$(".carta").forEach((carta) => carta.addEventListener("click", () => {
+    $("#md-emoji").textContent = $(".carta-emoji", carta).textContent;
+    $("#md-titulo").textContent = $(".carta-titulo", carta).textContent;
+    $("#md-desc").textContent = $(".carta-desc", carta).textContent;
+    $("#md-plat").hidden = carta.dataset.plat !== "1";
+    dlg.showModal();
+  }));
+  $("#md-fechar").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // clicar fora também fecha
+})();
 
 /* ---------- 11. ABAS "COMO FOI FEITO" ---------- */
 const abasSite = $$("#abas-site [role=tab]");

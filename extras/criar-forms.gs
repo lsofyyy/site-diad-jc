@@ -10,19 +10,19 @@ function criarFormulario() {
   form.setCollectEmail(false);
 
   form.addMultipleChoiceItem()
-    .setTitle('Você quer entrar no curso?')
+    .setTitle('Você gostaria de entrar para o curso de Desenvolvimento de Sistemas do João Clímaco?')
     .setChoiceValues(['Sim', 'Talvez', 'Ainda não'])
     .setRequired(true);
 
   form.addScaleItem()
     .setTitle('Gostou da apresentação?')
     .setBounds(1, 5)
-    .setLabels('1 = não gostei', '5 = amei')
+    .setLabels('Não foi tão legal', 'Melhor apresentação da escola!')
     .setRequired(true);
 
   form.addMultipleChoiceItem()
-    .setTitle('Tudo ficou incrível?')
-    .setChoiceValues(['Sim', 'Quase', 'Precisa melhorar'])
+    .setTitle('A sala ficou bonita?')
+    .setChoiceValues(['Nem tanto', 'Mediana', 'TOP!'])
     .setRequired(true);
 
   form.addParagraphTextItem()

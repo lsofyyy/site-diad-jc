@@ -97,41 +97,58 @@
           </article>
         </div>
         </div>
-        <!-- matérias do curso (1º ano). Cada card é uma matéria; o hover está no CSS (.materia:hover) -->
+        <!-- matérias do curso (1º ano): cards dentro de uma pasta. Passe o mouse para o card subir; clique para abrir inteiro.
+             Os contadores ficam ao lado da pasta. -->
         <h3 class="grade-titulo reveal">Matérias do 1º ano</h3>
-        <div class="materias reveal">
-          <article class="materia" style="--n:0" tabindex="0">
-            <h4>Pensamento Computacional I</h4>
-            <p>Resolver problemas dividindo em passos.</p>
-          </article>
-          <article class="materia" style="--n:1" tabindex="0">
-            <h4>Mentorias TEC I</h4>
-            <p>Orientação e acompanhamento do início do curso.</p>
-          </article>
-          <article class="materia" style="--n:2" tabindex="0">
-            <h4>Arquitetura de Computadores e Infraestrutura de TI</h4>
-            <p>Como computadores e redes funcionam por dentro.</p>
-          </article>
-          <article class="materia" style="--n:3" tabindex="0">
-            <h4>Lógica e Programação Estruturada</h4>
-            <p>Os primeiros programas, passo a passo.</p>
-          </article>
-          <article class="materia" style="--n:4" tabindex="0">
-            <h4>Modelagem de Banco de Dados</h4>
-            <p>Organizar informações em tabelas.</p>
-          </article>
-          <article class="materia" style="--n:5" tabindex="0">
-            <h4>Métodos Ágeis de Desenvolvimento</h4>
-            <p>Trabalhar em equipe, em pequenas entregas.</p>
-          </article>
+        <div class="materias-layout">
+          <div class="pasta reveal">
+            <div class="pasta-aba"><span aria-hidden="true">📁</span> 1º ano</div>
+            <div class="pasta-corpo">
+              <div class="pasta-cartas">
+            <button type="button" class="carta" style="--n:0" data-plat="1">
+              <span class="carta-emoji" aria-hidden="true">📘</span>
+              <span class="carta-texto"><strong class="carta-titulo">Pensamento Computacional I</strong><span class="carta-desc">Resolver problemas dividindo em passos.</span></span>
+            </button>
+            <button type="button" class="carta" style="--n:1" data-plat="1">
+              <span class="carta-emoji" aria-hidden="true">🧭</span>
+              <span class="carta-texto"><strong class="carta-titulo">Mentorias TEC I</strong><span class="carta-desc">Orientação e acompanhamento do início do curso.</span></span>
+            </button>
+            <button type="button" class="carta" style="--n:2" data-plat="0">
+              <span class="carta-emoji" aria-hidden="true">🖥️</span>
+              <span class="carta-texto"><strong class="carta-titulo">Arquitetura de Computadores e Infraestrutura de TI</strong><span class="carta-desc">Como computadores e redes funcionam por dentro.</span></span>
+            </button>
+            <button type="button" class="carta" style="--n:3" data-plat="0">
+              <span class="carta-emoji" aria-hidden="true">⌨️</span>
+              <span class="carta-texto"><strong class="carta-titulo">Lógica e Programação Estruturada</strong><span class="carta-desc">Os primeiros programas, passo a passo.</span></span>
+            </button>
+            <button type="button" class="carta" style="--n:4" data-plat="0">
+              <span class="carta-emoji" aria-hidden="true">🗄️</span>
+              <span class="carta-texto"><strong class="carta-titulo">Modelagem de Banco de Dados</strong><span class="carta-desc">Organizar informações em tabelas.</span></span>
+            </button>
+            <button type="button" class="carta" style="--n:5" data-plat="0">
+              <span class="carta-emoji" aria-hidden="true">🔁</span>
+              <span class="carta-texto"><strong class="carta-titulo">Métodos Ágeis de Desenvolvimento</strong><span class="carta-desc">Trabalhar em equipe, em pequenas entregas.</span></span>
+            </button>
+              </div>
+            </div>
+          </div>
+          <!-- contadores animados: o número final fica em data-alvo -->
+          <div class="contadores">
+            <div class="contador reveal"><strong data-alvo="6">0</strong><span>matérias no 1º ano</span></div>
+            <div class="contador reveal" style="--i:1"><strong data-alvo="7">0</strong><span>áreas de aprendizado</span></div>
+            <div class="contador reveal" style="--i:2"><strong data-alvo="6">0</strong><span>linguagens para conhecer</span></div>
+          </div>
         </div>
-        <p class="nota-grade reveal">As matérias dos outros anos podem ser consultadas na secretaria da escola.</p>
-        <!-- contadores animados: o número final fica em data-alvo -->
-        <div class="contadores">
-          <div class="contador reveal"><strong data-alvo="6">0</strong><span>matérias no 1º ano</span></div>
-          <div class="contador reveal" style="--i:1"><strong data-alvo="7">0</strong><span>áreas de aprendizado</span></div>
-          <div class="contador reveal" style="--i:2"><strong data-alvo="7">0</strong><span>linguagens e ferramentas para conhecer</span></div>
-        </div>
+        <p class="nota-grade reveal">Clique em um card para ver tudo sobre a matéria. As matérias dos outros anos podem ser consultadas na secretaria da escola.</p>
+        <!-- janela que abre ao clicar em uma matéria -->
+        <dialog class="materia-dialog" id="materia-dialog" aria-labelledby="md-titulo">
+          <button type="button" class="md-fechar" id="md-fechar" aria-label="Fechar">✕</button>
+          <span class="md-emoji" id="md-emoji" aria-hidden="true"></span>
+          <p class="md-ano">1º ano</p>
+          <h3 id="md-titulo"></h3>
+          <p id="md-desc"></p>
+          <p class="md-plat" id="md-plat" hidden>📚 Estudada na Biblioteca Virtual da Seduc-PI.</p>
+        </dialog>
       </div>
     </section>
 
@@ -294,7 +311,7 @@ git push</code></pre>
     <section id="quiz" class="secao" data-secao aria-labelledby="t-quiz">
       <div class="container">
         <h2 id="t-quiz" class="reveal" style="--i:1">Quiz</h2>
-        <p class="lead reveal" style="--i:2">Quatro perguntas rápidas. Será que você já pensa como programador?</p>
+        <p class="lead reveal" style="--i:2">Cinco perguntas rápidas. Será que você já pensa como programador?</p>
         <div class="quiz reveal" id="quiz-caixa" aria-live="polite"></div>
       </div>
     </section>
@@ -401,9 +418,9 @@ git push</code></pre>
             </div>
           </div>
           <div class="fb-perguntas">
-            <article class="fb-pergunta reveal"><span class="fb-num" aria-hidden="true">1</span><div><h3>Você quer entrar no curso?</h3><p>Sim · Talvez · Ainda não</p></div></article>
-            <article class="fb-pergunta reveal" style="--i:1"><span class="fb-num" aria-hidden="true">2</span><div><h3>Gostou da apresentação?</h3><p>De 1 a 5 estrelas ⭐</p></div></article>
-            <article class="fb-pergunta reveal" style="--i:2"><span class="fb-num" aria-hidden="true">3</span><div><h3>Tudo ficou incrível?</h3><p>Sim · Quase · Precisa melhorar</p></div></article>
+            <article class="fb-pergunta reveal"><span class="fb-num" aria-hidden="true">1</span><div><h3>Você gostaria de entrar para o curso de Desenvolvimento de Sistemas do João Clímaco?</h3><p>Sim · Talvez · Ainda não</p></div></article>
+            <article class="fb-pergunta reveal" style="--i:1"><span class="fb-num" aria-hidden="true">2</span><div><h3>Gostou da apresentação?</h3><p>De 1 a 5: 1 = Não foi tão legal · 5 = Melhor apresentação da escola!</p></div></article>
+            <article class="fb-pergunta reveal" style="--i:2"><span class="fb-num" aria-hidden="true">3</span><div><h3>A sala ficou bonita?</h3><p>Nem tanto · Mediana · TOP!</p></div></article>
             <article class="fb-pergunta opcional reveal" style="--i:3"><span class="fb-num" aria-hidden="true">+</span><div><h3>Comentário (opcional)</h3><p>Escreva o que quiser nos contar.</p></div></article>
           </div>
         </div>

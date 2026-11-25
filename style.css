@@ -208,28 +208,60 @@ code, pre { font-family: var(--fonte-mono); }
 .cartao h3 { font-size: 1.4rem; color: var(--roxo-800); }
 .cartao p { margin: 0; color: var(--texto-suave); font-size: 1rem; line-height: 1.5; }
 
-/* ---------- 8. MATÉRIAS (destaque animado ao passar o mouse) ---------- */
+/* ---------- 8. MATÉRIAS: CARDS DENTRO DE UMA PASTA ---------- */
 .grade-titulo { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 4.5rem 0 1.4rem; color: var(--roxo-900); }
-.materias { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-.materia {
-  background: var(--roxo-100); border-radius: var(--raio); padding: 1.6rem; cursor: default;
-  border: 2px solid transparent;
-  transition: transform .45s var(--ease), box-shadow .45s, background .45s, color .45s, opacity .35s;
+.materias-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+/* a pasta: uma aba em cima e um corpo roxo */
+.pasta { position: relative; padding-top: 2.6rem; }
+.pasta-aba {
+  position: absolute; top: 0; left: 1.5rem; padding: .55rem 1.6rem .9rem; border-radius: 18px 18px 0 0;
+  background: var(--roxo-800); color: var(--branco); font-weight: 800;
 }
-.materia h4 { margin: 0 0 .4rem; font-size: 1.2rem; color: var(--roxo-800); transition: color .45s; }
-.materia p { margin: 0; font-size: .97rem; color: var(--texto-suave); transition: color .45s; }
-/* o card sobe e muda de cor ao apontar o mouse (ou o foco do teclado) */
-.materia:hover, .materia:focus-visible { transform: translateY(-10px) scale(1.03); background: var(--roxo-800); box-shadow: var(--sombra-forte); }
-.materia:hover h4, .materia:focus-visible h4 { color: var(--amarelo); }
-.materia:hover p, .materia:focus-visible p { color: var(--branco); }
-/* o card apontado fica em foco e os outros esmaecem */
-.materias:hover .materia:not(:hover) { opacity: .5; transform: scale(.97); }
-.nota-grade { margin: 1.2rem 0 0; font-size: .95rem; color: var(--texto-suave); }
-/* entrada em cascata dos cards (fill "backwards": não atrapalha o hover) */
-.materias.visivel .materia { animation: entra .6s var(--ease) backwards; animation-delay: calc(var(--n, 0) * 90ms + .2s); }
+.pasta-corpo {
+  position: relative; background: linear-gradient(160deg, var(--roxo-800), var(--roxo-900));
+  border-radius: 0 var(--raio) var(--raio) var(--raio); padding: 1.4rem 1.4rem 1.6rem; box-shadow: var(--sombra-forte);
+}
+/* os cards ficam empilhados: só aparece o título de cada um */
+.pasta-cartas { display: grid; padding-bottom: .3rem; }
+.carta {
+  --alt: 7.4rem; --visivel: 3rem;
+  position: relative; z-index: 1; height: var(--alt); margin-bottom: calc(var(--visivel) - var(--alt));
+  display: flex; gap: .9rem; align-items: flex-start; text-align: left; cursor: pointer;
+  background: var(--branco); color: var(--texto); font: inherit; border: 2px solid var(--roxo-300); border-radius: 18px; padding: .8rem 1.1rem;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, .18);
+  transition: transform .4s var(--ease), box-shadow .4s, background .3s, border-color .3s;
+}
+.carta:last-child { margin-bottom: 0; }
+.carta-emoji { font-size: 1.5rem; line-height: 1.2; }
+.carta-texto { display: grid; gap: .9rem; min-width: 0; }
+.carta-titulo { font-size: 1.02rem; line-height: 1.25; color: var(--roxo-800); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.carta:hover .carta-titulo, .carta:focus-visible .carta-titulo { white-space: normal; }
+.carta-desc { font-size: .92rem; color: var(--texto-suave); }
+/* ao apontar o mouse (ou focar com o teclado) o card sobe e fica sobreposto aos outros */
+.carta:hover, .carta:focus-visible {
+  z-index: 5; transform: translateY(-1.7rem) scale(1.02); background: var(--roxo-100); border-color: var(--amarelo);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, .4);
+}
+.pasta-cartas:hover .carta:not(:hover) { filter: brightness(.88); }
+.js .pasta.visivel .carta { animation: entra .6s var(--ease) backwards; animation-delay: calc(var(--n, 0) * 90ms + .2s); }
+.nota-grade { margin: 1.4rem 0 0; font-size: .95rem; color: var(--texto-suave); }
+
+/* janela com o card inteiro (aparece ao clicar) */
+.materia-dialog {
+  width: min(480px, calc(100% - 2rem)); border: 0; border-radius: var(--raio); padding: 2rem; color: var(--texto);
+  background: var(--branco); box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+}
+.materia-dialog[open] { animation: pop .45s var(--ease); }
+.materia-dialog::backdrop { background: rgba(10, 10, 10, .6); backdrop-filter: blur(3px); }
+.md-fechar { position: absolute; top: .8rem; right: .8rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 0; cursor: pointer; background: var(--roxo-100); color: var(--roxo-800); font-size: 1rem; font-weight: 800; }
+.md-fechar:hover { background: var(--roxo-800); color: var(--branco); }
+.md-emoji { font-size: 3rem; display: block; }
+.md-ano { margin: .4rem 0 0; font-weight: 700; color: var(--roxo-600); font-size: .9rem; }
+.materia-dialog h3 { font-size: 1.7rem; color: var(--roxo-900); margin: .2rem 0 .8rem; }
+.md-plat { background: var(--azul-100); border-radius: 14px; padding: .7rem 1rem; font-weight: 600; margin: 1rem 0 0; }
 
 /* contadores */
-.contadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+.contadores { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
 .contador { background: var(--grad-roxo); color: var(--branco); border-radius: var(--raio); padding: 2rem; text-align: center; box-shadow: var(--sombra); transition: transform .4s var(--ease); }
 .contador:hover { transform: translateY(-6px) rotate(-1deg); }
 .contador strong { display: block; font-size: clamp(3.2rem, 7vw, 5rem); line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
@@ -428,7 +460,8 @@ code, pre { font-family: var(--fonte-mono); }
   .anel-cena { --larg: 270px; --alt: 280px; --raio-anel: 340px; height: 420px; }
 }
 @media (max-width: 860px) {
-  .lab, .plat-grade, .fb-grade { grid-template-columns: 1fr; }
+  .lab, .plat-grade, .fb-grade, .materias-layout { grid-template-columns: 1fr; }
+  .contadores { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
   .marca { display: none; }
   .menu { justify-content: flex-start; }
   .logo-badge img { height: 78px; }
@@ -450,5 +483,6 @@ code, pre { font-family: var(--fonte-mono); }
   .anel { width: auto; height: auto; transform: none; transform-style: flat; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
   .qr-cartao { animation: none; }
   .anel-cena { cursor: auto; }
+  .js .pasta.visivel .carta { animation: none; }
   .anel .cartao { position: static; transform: none; backface-visibility: visible; }
 }
