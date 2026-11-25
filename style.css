@@ -25,8 +25,8 @@
   --texto: #1b1236;
   --texto-suave: #4b4470;
   --raio: 28px;
-  --sombra: 0 12px 34px rgba(91, 33, 182, 0.13);
-  --sombra-forte: 0 22px 55px rgba(91, 33, 182, 0.28);
+  --sombra: 0 12px 34px rgba(0, 0, 0, 0.14);
+  --sombra-forte: 0 22px 55px rgba(0, 0, 0, 0.30);
   --grad-roxo: linear-gradient(135deg, var(--roxo-800), var(--azul-700)); /* gradiente principal: roxo → azul */
   --grad-escuro: linear-gradient(160deg, var(--roxo-900), var(--azul-900)); /* hero e rodapé */
   --ease: cubic-bezier(.2, .8, .2, 1);
@@ -98,7 +98,7 @@ code, pre { font-family: var(--fonte-mono); }
    o JS põe a classe .claro quando o menu está sobre uma seção clara */
 .topo {
   position: fixed; top: 5px; left: 0; right: 0; z-index: 90;
-  background: rgba(46, 16, 101, .18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: rgba(46, 16, 101, .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255, 255, 255, .1);
   transition: background .4s, border-color .4s, backdrop-filter .4s;
 }
