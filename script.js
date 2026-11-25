@@ -188,17 +188,17 @@ $$(".flip").forEach((card) => {
 const EXEMPLOS = {
   botao: {
     html: '<button id="b">Clique em mim</button>',
-    css: "button {\n  font-size: 1.4rem;\n  padding: .8rem 1.6rem;\n  border: 0;\n  border-radius: 12px;\n  background: #7c3aed;\n  color: white;\n  cursor: pointer;\n}",
-    js: "const b = document.getElementById('b');\nconst cores = ['#7c3aed', '#1f6fb8', '#be185d', '#fbbf24'];\nlet i = 0;\nb.addEventListener('click', () => {\n  i = (i + 1) % cores.length;\n  b.style.background = cores[i];\n});",
+    css: "button {\n  font-size: 1.4rem;\n  padding: .8rem 1.6rem;\n  border: 0;\n  border-radius: 12px;\n  background: #a21cf0;\n  color: white;\n  cursor: pointer;\n}",
+    js: "const b = document.getElementById('b');\nconst cores = ['#a21cf0', '#1f6fb8', '#be185d', '#fbbf24'];\nlet i = 0;\nb.addEventListener('click', () => {\n  i = (i + 1) % cores.length;\n  b.style.background = cores[i];\n});",
   },
   contador: {
     html: '<h1 id="n">0</h1>\n<button id="mais">+1</button>',
-    css: "h1 { font-size: 4rem; margin: 0; color: #5b21b6; }\nbutton { font-size: 1.2rem; padding: .6rem 1.4rem; border-radius: 10px; border: 0; background: #7c3aed; color: #fff; cursor: pointer; }",
+    css: "h1 { font-size: 4rem; margin: 0; color: #7a0fb8; }\nbutton { font-size: 1.2rem; padding: .6rem 1.4rem; border-radius: 10px; border: 0; background: #a21cf0; color: #fff; cursor: pointer; }",
     js: "let total = 0;\ndocument.getElementById('mais').onclick = () => {\n  total++;\n  document.getElementById('n').textContent = total;\n};",
   },
   cartao: {
     html: '<div class="cartao">Olá, 9º ano! 👋</div>',
-    css: ".cartao {\n  padding: 2rem 3rem;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #5b21b6, #1f6fb8);\n  color: white;\n  font-size: 1.5rem;\n  animation: balancar 2s ease-in-out infinite;\n}\n@keyframes balancar {\n  0%, 100% { transform: rotate(-4deg); }\n  50% { transform: rotate(4deg) scale(1.08); }\n}",
+    css: ".cartao {\n  padding: 2rem 3rem;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #7a0fb8, #1f6fb8);\n  color: white;\n  font-size: 1.5rem;\n  animation: balancar 2s ease-in-out infinite;\n}\n@keyframes balancar {\n  0%, 100% { transform: rotate(-4deg); }\n  50% { transform: rotate(4deg) scale(1.08); }\n}",
     js: "// Este exemplo não precisa de JavaScript.\n// Tente mudar a duração (2s) no CSS!",
   },
 };
@@ -225,7 +225,7 @@ carregarExemplo("botao");
 /* ---------- 10. VS CODE SIMULADO ---------- */
 const ARQUIVOS = {
   "index.html": { lang: "html", code: '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <title>Meu site</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1 id="titulo">Olá, mundo!</h1>\n  <button id="botao">Mudar cor</button>\n  <script src="script.js"><\/script>\n</body>\n</html>' },
-  "style.css": { lang: "css", code: ":root {\n  --cor: #7c3aed;\n}\nbody {\n  font-family: system-ui;\n  text-align: center;\n  padding: 2rem;\n}\nh1 {\n  color: var(--cor);\n}\nbutton {\n  padding: 10px 18px;\n  border: 0;\n  border-radius: 10px;\n  background: var(--cor);\n  color: white;\n  cursor: pointer;\n}" },
+  "style.css": { lang: "css", code: ":root {\n  --cor: #a21cf0;\n}\nbody {\n  font-family: system-ui;\n  text-align: center;\n  padding: 2rem;\n}\nh1 {\n  color: var(--cor);\n}\nbutton {\n  padding: 10px 18px;\n  border: 0;\n  border-radius: 10px;\n  background: var(--cor);\n  color: white;\n  cursor: pointer;\n}" },
   "script.js": { lang: "js", code: '// Troca a cor do título ao clicar\nconst titulo = document.getElementById("titulo");\nconst botao = document.getElementById("botao");\nbotao.addEventListener("click", () => {\n  titulo.style.color = "#be185d";\n});' },
   "README.md": { lang: "md", code: "# Meu site\n\nProjeto do curso de Desenvolvimento de Sistemas.\nAbra o index.html no navegador." },
   ".gitignore": { lang: "gitignore", code: "node_modules/\n.env\n.DS_Store" },
@@ -397,7 +397,7 @@ $("#btn-fluxo").addEventListener("click", rodarFluxo);
 (function simbolos() {
   const caixa = $("#simbolos");
   const lista = ["</>", "{ }", "( )", "[ ]", ";", "=>", "&&", "||", "//", "#", "01", "10", "<div>", "fn()", "if", "=", "!=", "++", "const", "$", "%", "*", "<>", "..", "0x", "return", "{ ; }", "</>"];
-  const cores = ["#ffffff", "#c4b5fd", "#fbbf24", "#a5d8ff"];
+  const cores = ["#ffffff", "#d8a8ff", "#fbbf24", "#a5d8ff"];
   // posições "espalhadas" calculadas com números fixos (sempre iguais, sem sorteio)
   lista.forEach((txt, i) => {
     const sim = document.createElement("div");
